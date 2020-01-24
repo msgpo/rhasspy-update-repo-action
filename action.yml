@@ -1,0 +1,17 @@
+name: 'Rhasspy Update Repo'
+description: 'Update a Rhasspy repository from a template repository'
+author: 'Koen Vervloesem'
+inputs:
+  repository:
+    description: 'Location of the directory of the repository to update'
+    required: true
+    default: 'main'
+  template:
+    description: 'Location of the directory of the template repository'
+    required: true
+    default: 'template'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.template }} ${{ inputs.repository }}
